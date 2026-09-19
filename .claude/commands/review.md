@@ -1,7 +1,6 @@
 # Playwright Automation Review
 
-Review the specified Playwright test files against the
-automation standards defined in CLAUDE.md.
+Check the target files against the `automation-standards` skill.
 
 ## Step 1 — Identify target files
 
@@ -49,7 +48,7 @@ Check for:
 - Duplicate code.
 - Unnecessary mutable state.
 
-## Step 6 — Compare against CLAUDE.md
+## Step 6 — Compare against the automation-standards skill
 
 For every violation provide:
 
