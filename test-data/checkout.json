@@ -1,1 +1,7 @@
-{ "firstName": "Sam", "lastName": "Tester", "postalCode": "560001" }
+{
+  "firstName": "Rajesh",
+  "lastName": "Bandaru",
+  "postalCode": "560001",
+  "email": "rajesh.bandaru84@gmail.com",
+  "phone": "+91-98765-43210"
+}

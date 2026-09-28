@@ -65,7 +65,7 @@ directly (`resolveJsonModule`). No credentials or URLs inline in specs.
 Config: `fullyParallel: true`, chromium-only project, retries/workers only under
 `CI`, trace on first retry, screenshot on failure.
 
-#Code review
+## Code review
 
-For anything about spec or page-object quality, use the automation-standards
-skill.
+`/review` fans out to `spec-reviewer` (per changed file) and `security-agent`
+(whole changeset) subagents — see `.claude/commands/review.md`.

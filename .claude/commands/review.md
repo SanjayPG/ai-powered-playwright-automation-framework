@@ -1,69 +1,28 @@
 # Playwright Automation Review
 
-Check the target files against the `automation-standards` skill.
-
 ## Step 1 — Identify target files
 
-If file paths are provided through $ARGUMENTS,
-review those files.
+If file paths are provided through $ARGUMENTS, review those files.
+If no paths are provided, identify files changed compared with the main branch.
 
-If no paths are provided, identify files changed
-compared with the main branch.
+## Step 2 — Fan out
 
-## Step 2 — Review test structure
+Spawn, all in parallel:
+- one `spec-reviewer` subagent per changed spec / page object, one path each;
+- one `security-agent` subagent over the whole list of changed files.
 
-Check whether:
+## Step 3 — Merge results
 
-- Tests represent a single business scenario.
-- Tests are independent.
-- Setup and teardown are handled correctly.
-- Tests don't depend on execution order.
-- Test data is appropriately managed.
+Collect every JSON array. Merge into one list. If the same line is flagged by
+both agents, keep it once at the higher severity.
 
-## Step 3 — Review locator strategy
+## Step 4 — Report
 
-Check whether:
+Print: findings grouped by file, a short "Security" section, then a one-line
+verdict (BLOCK / FIX-BEFORE-MERGE / NITS-ONLY / PASS).
 
-- Locators follow the project's preferred strategy.
-- Raw CSS/XPath selectors are avoided where appropriate.
-- Locators are maintained inside Page Objects where required.
-- Selectors are not unnecessarily duplicated.
+## Step 5 — Failure handling
 
-## Step 4 — Review Page Object usage
-
-Check whether:
-
-- Page-specific locators are inside Page Objects.
-- Page-specific actions are encapsulated.
-- Tests focus on business behaviour.
-
-## Step 5 — Review Playwright practices
-
-Check for:
-
-- Unnecessary waits such as page.waitForTimeout().
-- Incorrect assertion usage.
-- Unnecessary retries.
-- Improper fixture usage.
-- Duplicate code.
-- Unnecessary mutable state.
-
-## Step 6 — Compare against the automation-standards skill
-
-For every violation provide:
-
-- File and line number.
-- Relevant project standard.
-- Why it matters.
-- Concrete fix.
-
-## Step 7 — Final verdict
-
-Return one of:
-
-BLOCK
-FIX-BEFORE-MERGE
-NITS-ONLY
-PASS
+A subagent that fails: log `[SKIP] <name/path>` and keep the rest.
 
 Do not modify any files.

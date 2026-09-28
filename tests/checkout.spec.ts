@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'; // (A) bypasses the shared fixtures / Page Objects
-
+// mytest
 test('checkout', async ({ page }) => {
   // (B) hardcoded credentials and absolute URL inline
   await page.goto('https://www.saucedemo.com');
